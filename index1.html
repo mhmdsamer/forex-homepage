@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Pro Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0f2c;
+            color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 44, 0.95);
+            z-index: 1000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo h1 {
+            color: #0ace8f;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-right: 50px;
+        }
+
+        .nav-links a {
+            color: #f3f4f6;
+            font-size: 1.1rem;
+            padding: 5px 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #0ace8f, #21d4fd);
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #0ace8f, #21d4fd);
+            color: #fff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0px 5px 15px rgba(10, 206, 143, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 15px 25px rgba(10, 206, 143, 0.7);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/forex-hero.webp') center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-attachment: fixed;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #d1d4dc;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Chart Section */
+        .chart-title {
+            font-size: 2rem;
+            margin: 40px 0;
+            text-align: center;
+            color: #f3f4f6;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .tradingview-widget-container {
+            margin: 20px 0;
+        }
+
+        .forex-widget {
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0f2c;
+            padding: 30px;
+            text-align: center;
+            color: #f3f4f6;
+        }
+
+        footer a {
+            color: #21d4fd;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        footer a:hover {
+            color: #0ace8f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: rgba(10, 15, 44, 0.9);
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Forex Pro Hub</h1>
+        </div>
+        <nav class="nav-menu">
+            <!-- Hamburger Icon -->
+            <div class="hamburger" onclick="toggleNav()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#market">Profile</a></li>
+                <li><a href="#education">Transctions</a></li>
+                <li><a href="#tools">Withdrawl</a></li>
+                <li><a href="#contact">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Trade Smarter. Earn Faster.</h1>
+            <p>Access real-time market insights and powerful trading tools designed for success.</p>
+            <a href="#get-started" class="btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Market Overview Section -->
+    <section>
+        <div class="chart-title">Market Overview</div>
+        <div class="chart-container">
+            <div class="tradingview-widget-container">
+                <div id="tradingview_widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                    new TradingView.widget({
+                        container_id: "tradingview_widget",
+                        width: "100%",
+                        height: "800",
+                        symbol: "FX:EURUSD",
+                        interval: "D",
+                        timezone: "Etc/UTC",
+                        theme: "dark",
+                        style: "1",
+                        locale: "en",
+                        toolbar_bg: "#1c2537",
+                        enable_publishing: false,
+                        allow_symbol_change: true,
+                        autosize: false,
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Overview Section -->
+    <section>
+        <div class="chart-title">Market Rates</div>
+        <div class="chart-container">
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js">
+                {
+                    "colorTheme": "dark",
+                    "dateRange": "12M",
+                    "showChart": true,
+                    "locale": "en",
+                    "width": "100%",
+                    "height": 500,
+                    "symbolsGroups": [
+                        {
+                            "name": "Forex",
+                            "originalName": "Forex",
+                            "symbols": [
+                                { "name": "FX:EURUSD", "displayName": "EUR/USD" },
+                                { "name": "FX:GBPUSD", "displayName": "GBP/USD" },
+                                { "name": "FX:USDJPY", "displayName": "USD/JPY" },
+                                { "name": "FX:USDCAD", "displayName": "USD/CAD" },
+                                { "name": "FX:AUDUSD", "displayName": "AUD/USD" }
+                            ]
+                        }
+                    ]
+                }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Major Forex Pairs Section -->
+    <section>
+        <div class="chart-title">Market Cross Rates</div>
+        <div class="chart-container">
+            <div class="tradingview-widget-container forex-widget">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js">
+                    {
+                        "width": "100%",
+                        "height": "400",
+                        "currencies": [
+                            "EUR",
+                            "USD",
+                            "GBP",
+                            "JPY",
+                            "CHF",
+                            "AUD",
+                            "CAD"
+                        ],
+                        "isTransparent": false,
+                        "colorTheme": "dark",
+                        "locale": "en"
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Forex Heatmap Section -->
+<section id="heatmap">
+    <div class="chart-title">Market Heatmap</div>
+    <div class="chart-container">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js">
+            {
+                "width": "100%",
+                "height": "600",
+                "currencies": [
+                    "EUR",
+                    "USD",
+                    "JPY",
+                    "GBP",
+                    "AUD",
+                    "CAD",
+                    "CHF",
+                    "NZD"
+                ],
+                "isTransparent": false,
+                "colorTheme": "dark",
+                "locale": "en"
+            }
+            </script>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>Connect with us:</p>
+        <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
